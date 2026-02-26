@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Gem Discovery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #121212;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #1db954;
+            margin-bottom: 20px;
+        }
+
+        .user-profile {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .user-profile.show {
+            display: inline-block;
+        }
+
+        .user-profile strong {
+            color: #1db954;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #282828;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .card-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1db954;
+            margin-bottom: 24px;
+        }
+
+        .song-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .song-artist {
+            font-size: 16px;
+            color: #b3b3b3;
+            margin-bottom: 32px;
+        }
+
+        .scores {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .score-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .score-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #b3b3b3;
+            margin-bottom: 10px;
+        }
+
+        .score-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1db954;
+        }
+
+        .description {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 28px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            flex: 1;
+            transition: 0.2s;
+        }
+
+        .btn-play, .btn-next, .btn-login {
+            background: #1db954;
+            color: white;
+        }
+
+        .btn-play:hover, .btn-next:hover, .btn-login:hover {
+            background: #1ed760;
+        }
+
+        .btn-reaction {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .btn-reaction:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+        }
+
+        .login-section {
+            text-align: center;
+        }
+
+        .login-text {
+            font-size: 16px;
+            margin-bottom: 24px;
+            color: #b3b3b3;
+        }
+
+        .counter {
+            font-size: 12px;
+            color: #b3b3b3;
+            margin-top: 16px;
+        }
+
+        .info {
+            text-align: center;
+            font-size: 13px;
+            color: #b3b3b3;
+            line-height: 1.8;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Spotify</h1>
+            <div class="user-profile" id="profile">
+                You mostly listen to: <strong id="genres">-</strong>
+                <button onclick="logout()" style="margin-left: 20px; padding: 6px 12px; font-size: 12px; background: rgba(255,255,255,0.1); border: none; color: #b3b3b3; border-radius: 4px; cursor: pointer;">Logout</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="login-view" class="login-section">
+                <div class="card-title">Hidden Gem Discovery</div>
+                <p class="login-text">Login with your Spotify account to discover music tailored to your taste</p>
+                <button class="btn-login" onclick="spotifyLogin()">Login with Spotify</button>
+            </div>
+
+            <div id="recommendation-view" class="hidden">
+                <div class="card-title">Hidden Gem Discovery</div>
+                <div class="song-title" id="song">-</div>
+                <div class="song-artist" id="artist">-</div>
+
+                <div class="scores">
+                    <div class="score-box">
+                        <div class="score-label">Obscurity Score</div>
+                        <div class="score-value" id="obscurity">-</div>
+                    </div>
+                    <div class="score-box">
+                        <div class="score-label">Match Likelihood</div>
+                        <div class="score-value" id="match">-</div>
+                    </div>
+                </div>
+
+                <div class="description" id="description">-</div>
+
+                <div class="buttons">
+                    <button class="btn-play" onclick="playSong()">Play on Spotify</button>
+                    <button class="btn-next" onclick="nextSong()">Get Another</button>
+                    <div class="btn-row">
+                        <button class="btn-reaction" onclick="react('Intriguing')">Intriguing</button>
+                        <button class="btn-reaction" onclick="react('Maybe')">Maybe</button>
+                        <button class="btn-reaction" onclick="react('Pass')">Pass</button>
+                    </div>
+                </div>
+
+                <div class="counter" id="counter">Recommendations viewed: 1</div>
+            </div>
+        </div>
+
+        <div class="info">
+            <p>Discover music outside your comfort zone</p>
+            <p>Each suggestion is analyzed based on your listening profile</p>
+        </div>
+    </div>
+
+    <script>
+        // ========================================================================
+        // SECURITY NOTES
+        // ========================================================================
+        // CLIENT_ID is PUBLIC information needed for OAuth flow (safe to expose)
+        // NEVER expose CLIENT_SECRET on the frontend - it stays on backend only
+        // All authentication tokens are stored in localStorage with no expiration
+        // Backend enforces rate limiting and input validation
+        // ========================================================================
+
+        const CLIENT_ID = "305badaa9b684a8bb9f0b21b94f686bb";
+        const AUTH_ENDPOINT = "http://127.0.0.1:5000/callback";
+
+        let token = localStorage.getItem("spotify_token");
+        let genres = [];
+        let count = 1;
+        let current = null;
+        let topArtists = [];
+
+        const SONGS = [];
+
+        function spotifyLogin() {
+            const url = new URL("https://accounts.spotify.com/authorize");
+            url.searchParams.set("client_id", CLIENT_ID);
+            url.searchParams.set("response_type", "code");
+            url.searchParams.set("redirect_uri", AUTH_ENDPOINT);
+            url.searchParams.set("scope", "user-top-read user-read-private user-read-email user-modify-playback-state");
+            window.location.href = url.toString();
+        }
+
+        function checkToken() {
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+            const t = params.get("access_token");
+            if (t) {
+                token = t;
+                localStorage.setItem("spotify_token", token);
+                window.history.replaceState({}, "", window.location.pathname);
+                loadProfile();
+            } else if (token) {
+                // Token exists in localStorage, load profile
+                loadProfile();
+            }
+        }
+
+        async function loadProfile() {
+            try {
+                const res = await fetch("https://api.spotify.com/v1/me/top/artists?limit=50", {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                
+                if (!res.ok) {
+                    throw new Error(`Spotify API error: ${res.status}`);
+                }
+                
+                const data = await res.json();
+                
+                if (!data.items || !Array.isArray(data.items)) {
+                    console.error("Invalid response from Spotify:", data);
+                    throw new Error("Could not retrieve listening profile from Spotify");
+                }
+
+                topArtists = data.items;
+                
+                const genreCount = {};
+                data.items.forEach(a => {
+                    if (a.genres && Array.isArray(a.genres)) {
+                        a.genres.forEach(g => {
+                            genreCount[g] = (genreCount[g] || 0) + 1;
+                        });
+                    }
+                });
+
+                genres = Object.entries(genreCount)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5)
+                    .map(g => g[0]);
+
+                if (genres.length === 0) {
+                    genres = ["Electronic", "Indie", "Ambient"];
+                }
+
+                showRecommendations();
+            } catch (e) {
+                alert("Error loading profile: " + e.message);
+                console.error("Profile error:", e);
+            }
+        }
+
+        function showRecommendations() {
+            document.getElementById("login-view").classList.add("hidden");
+            document.getElementById("recommendation-view").classList.remove("hidden");
+            document.getElementById("profile").classList.add("show");
+            document.getElementById("genres").textContent = genres.slice(0, 2).map(g => g.charAt(0).toUpperCase() + g.slice(1)).join(" & ");
+            nextSong();
+        }
+
+        async function nextSong() {
+            try {
+                // Input validation - prevent unnecessary requests
+                if (!token || token.length < 50) {
+                    alert("Session expired. Please login again.");
+                    logout();
+                    return;
+                }
+                
+                if (topArtists.length === 0) {
+                    alert("No artists found in your profile");
+                    return;
+                }
+
+                // Get all artist names and validate
+                const artistNames = topArtists.map(a => a.name).join(',');
+                if (!artistNames || artistNames.length === 0) {
+                    alert("Error: Could not extract artist names");
+                    return;
+                }
+
+                // Call backend to get track with proper error handling
+                const res = await fetch("http://127.0.0.1:5000/api/get-track", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        token: token,
+                        artist_names: artistNames,
+                        genres: genres
+                    })
+                });
+
+                if (res.status === 401) {
+                    // Token expired or invalid
+                    logout();
+                    return;
+                }
+
+                if (res.status === 429) {
+                    alert("You're requesting too frequently. Please wait a moment.");
+                    return;
+                }
+
+                if (!res.ok) {
+                    const error = await res.json();
+                    throw new Error(error.error || `Server error: ${res.status}`);
+                }
+
+                const result = await res.json();
+                const track = result.track;
+                const description = result.description || "A great find for your taste.";
+                displayTrack(track, description);
+            } catch (e) {
+                console.error("Error fetching track:", e);
+                alert("Error: " + e.message);
+            }
+        }
+
+        function displayTrack(track, description) {
+            // Ensure all required fields exist
+            const popularity = track.popularity || 50;
+            const duration = (track.duration_ms || 180000) / 1000 / 60;
+            const title = track.name || "Unknown Track";
+            const artistName = track.artists && track.artists.length > 0 ? track.artists.map(a => a.name).join(", ") : "Unknown Artist";
+            
+            // Calculate obscurity (least popular songs get highest score)
+            const obscurity = Math.max(0, 100 - popularity);
+            
+            current = {
+                title: title,
+                artist: artistName,
+                uri: track.uri || "",
+                popularity: popularity,
+                obscurity: obscurity,
+                match: Math.floor(30 + Math.random() * 40),
+                desc: description || `${title} by ${artistName} - ${Math.floor(duration)}m track with popularity score ${popularity}/100.`
+            };
+
+            count++;
+            document.getElementById("song").textContent = current.title;
+            document.getElementById("artist").textContent = `by ${current.artist}`;
+            document.getElementById("obscurity").textContent = isNaN(current.obscurity) ? "?" : Math.round(current.obscurity) + "%";
+            document.getElementById("match").textContent = isNaN(current.match) ? "?" : current.match + "%";
+            document.getElementById("description").textContent = current.desc;
+            document.getElementById("counter").textContent = `Recommendations viewed: ${count}`;
+        }
+
+        function playSong() {
+            if (!current) {
+                alert("No track loaded. Click 'Get Another' first.");
+                return;
+            }
+            
+            // Open Spotify search with the track title and artist
+            const searchQuery = encodeURIComponent(`${current.title} ${current.artist}`);
+            window.open(`https://open.spotify.com/search/${searchQuery}`, "_blank");
+        }
+
+        function react(response) {
+            if (response === "Intriguing") {
+                alert("Love it! Let's find more like this.");
+            } else if (response === "Maybe") {
+                alert("Could work for the right mood.");
+            } else if (response === "Pass") {
+                alert("Got it. We'll skip those.");
+            }
+            setTimeout(() => nextSong(), 1000);
+        }
+
+        function logout() {
+            localStorage.removeItem("spotify_token");
+            token = null;
+            location.reload();
+        }
+
+        checkToken();
+    </script>
+</body>
+</html>

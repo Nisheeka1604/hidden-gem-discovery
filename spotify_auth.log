@@ -1,0 +1,16 @@
+[2026-02-26 18:44:58,605] INFO: ======================================================================
+[2026-02-26 18:44:58,605] INFO: SPOTIFY OAUTH SERVER - SECURITY HARDENED
+[2026-02-26 18:44:58,606] INFO: ======================================================================
+[2026-02-26 18:44:58,606] INFO: [OK] Environment: production
+[2026-02-26 18:44:58,606] INFO: [OK] Rate Limiting: Enabled
+[2026-02-26 18:44:58,606] INFO: [OK] Input Validation: Enabled
+[2026-02-26 18:44:58,606] INFO: [OK] CORS: Restricted to ['http://127.0.0.1:8000', 'http://localhost:8000']
+[2026-02-26 18:44:58,606] INFO: [OK] Max Content Length: 1048576 bytes
+[2026-02-26 18:44:58,607] INFO: [OK] Logging: Enabled (spotify_auth.log)
+[2026-02-26 18:44:58,607] INFO: ======================================================================
+[2026-02-26 18:44:58,607] INFO: Server starting on http://127.0.0.1:5000
+[2026-02-26 18:44:58,607] INFO: Health check: http://127.0.0.1:5000/health
+[2026-02-26 18:44:58,607] INFO: ======================================================================
+[2026-02-26 18:44:58,616] INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2026-02-26 18:44:58,616] INFO: [33mPress CTRL+C to quit[0m
