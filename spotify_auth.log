@@ -14,3 +14,55 @@
 [2026-02-26 18:44:58,616] INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 [2026-02-26 18:44:58,616] INFO: [33mPress CTRL+C to quit[0m
+[2026-02-26 18:48:29,336] INFO: ======================================================================
+[2026-02-26 18:48:29,336] INFO: SPOTIFY OAUTH SERVER - SECURITY HARDENED
+[2026-02-26 18:48:29,336] INFO: ======================================================================
+[2026-02-26 18:48:29,336] INFO: [OK] Environment: production
+[2026-02-26 18:48:29,336] INFO: [OK] Rate Limiting: Enabled
+[2026-02-26 18:48:29,336] INFO: [OK] Input Validation: Enabled
+[2026-02-26 18:48:29,336] INFO: [OK] CORS: Restricted to ['http://127.0.0.1:8000', 'http://localhost:8000']
+[2026-02-26 18:48:29,336] INFO: [OK] Max Content Length: 1048576 bytes
+[2026-02-26 18:48:29,336] INFO: [OK] Logging: Enabled (spotify_auth.log)
+[2026-02-26 18:48:29,336] INFO: ======================================================================
+[2026-02-26 18:48:29,336] INFO: Server starting on http://127.0.0.1:5000
+[2026-02-26 18:48:29,336] INFO: Health check: http://127.0.0.1:5000/health
+[2026-02-26 18:48:29,336] INFO: ======================================================================
+[2026-02-26 18:48:29,344] INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2026-02-26 18:48:29,344] INFO: [33mPress CTRL+C to quit[0m
+[2026-02-26 18:49:03,656] INFO: 127.0.0.1 - - [26/Feb/2026 18:49:03] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:49:17,891] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:49:17,892] INFO: 127.0.0.1 - - [26/Feb/2026 18:49:17] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:23,228] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:23] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:29,226] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:29] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:34,904] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:50:34,907] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:34] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:40,212] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:50:40,214] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:40] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:43,654] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:50:43,656] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:43] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:45,238] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:50:45,239] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:45] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:50:47,320] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:50:47,321] INFO: 127.0.0.1 - - [26/Feb/2026 18:50:47] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:00,447] INFO: [callback] [GET] IP: 127.0.0.1
+[2026-02-26 18:51:00,450] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:00] "[32mGET /callback?code=AQDy1pTG5Sj8UUyAY_xHuE57s69RwA9ariooBqmMdMBJFum38JmofKiKTz9CO5zVgqXEwgR7VREgXipnQXrqn-7oOrAuAaLqnXj-fniFgV_Zo9jhGcmeCjlG7oqNuty_zDGiLsHcvgivT0-bINtGVuO38awzSgBC_g3BflNVzOZfK0tAue6CLKrJcy6QXaOgMrcw8D1mQxGCBeG-vd6ZfzuhH87oLvO4HVsRjm-bI9p6UPZUeMxYRYEJaPkIu5n8d3StLLsHPzmef2-s5I-6EO4 HTTP/1.1[0m" 302 -
+[2026-02-26 18:51:00,886] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:00] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:13,172] INFO: [callback] [GET] IP: 127.0.0.1
+[2026-02-26 18:51:13,174] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:13] "[32mGET /callback?code=AQBrEycs_a9Uw4zNSKYVJrMW8gsBSq-Mrs2O5ClDWiBz6XBwHlKPXBMzhzYpWRPAnTCifvQhiJcCvky2Blrx9LMc_w0E2BNxUJsmW1DMOWLfHjxocl-e5A9LeeanCyqKRIkATE_yEbyCNQQhwHrASIxLHma2AvVCjJTdCKB_ez5Wl4uKePbGnhX34yhm0fiOygZhNUdNwV1pTvYa3M7nmgkV_m4IpLpXRp8Baj1laKuqar6IlZrEdDxnElf2ai7pvtS5nLz4Q1WqVOAlvcFPpvM HTTP/1.1[0m" 302 -
+[2026-02-26 18:51:13,664] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:13] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:14,114] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:51:14,117] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:14] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:25,943] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:51:25,946] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:25] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:31,039] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:31] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:37,522] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:37] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:41,798] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:51:41,800] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:41] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:47,682] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:47] "OPTIONS /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:48,292] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:51:48,296] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:48] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:51:53,883] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:51:53,889] INFO: 127.0.0.1 - - [26/Feb/2026 18:51:53] "POST /api/get-track HTTP/1.1" 200 -
+[2026-02-26 18:52:01,492] INFO: [get-track] [POST] IP: 127.0.0.1
+[2026-02-26 18:52:01,496] INFO: 127.0.0.1 - - [26/Feb/2026 18:52:01] "POST /api/get-track HTTP/1.1" 200 -
