@@ -261,7 +261,20 @@
         // ========================================================================
 
         const CLIENT_ID = "305badaa9b684a8bb9f0b21b94f686bb";
-        const AUTH_ENDPOINT = "http://127.0.0.1:5000/callback";
+        
+        // ========================================================================
+        // ENVIRONMENT CONFIGURATION
+        // Automatically detect localhost vs deployed backend
+        // ========================================================================
+        const API_BASE_URL = (() => {
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                return 'http://127.0.0.1:5000';  // Local development
+            }
+            // For Vercel deployment, use environment variable or your deployed backend URL
+            return window.__API_BASE_URL || 'https://your-deployed-backend.com';
+        })();
+        
+        const AUTH_ENDPOINT = `${API_BASE_URL}/callback`;
 
         let token = localStorage.getItem("spotify_token");
         let genres = [];
@@ -369,7 +382,7 @@
                 }
 
                 // Call backend to get track with proper error handling
-                const res = await fetch("http://127.0.0.1:5000/api/get-track", {
+                const res = await fetch(`${API_BASE_URL}/api/get-track`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
